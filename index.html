@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -25,20 +24,16 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            /* Исправления для Safari */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
         }
 
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -73,7 +68,6 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 1;
             }
-
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
@@ -84,19 +78,14 @@
             font-size: clamp(2rem, 8vw, 3.5rem);
             font-weight: 300;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: glow 2s ease-in-out infinite alternate;
             line-height: 1.2;
         }
 
         @keyframes glow {
-            from {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
-            }
-
-            to {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.8);
-            }
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.5); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.8); }
         }
 
         .subtitle {
@@ -108,17 +97,20 @@
         }
 
         .countdown-container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 1.5rem;
             margin: 1.5rem 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            /* Fallback для Safari */
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
         }
 
         .countdown {
@@ -130,17 +122,20 @@
         }
 
         .time-unit {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.25);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
             border-radius: 15px;
             padding: 1rem;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             transition: transform 0.3s ease;
             min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            /* Fallback для Safari */
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.4));
         }
 
         .time-unit:hover {
@@ -152,12 +147,22 @@
             font-weight: bold;
             display: block;
             line-height: 1;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            /* Принудительное отображение для Safari */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .time-label {
             font-size: clamp(0.8rem, 3vw, 1rem);
-            opacity: 0.8;
+            opacity: 0.9;
             margin-top: 0.3rem;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            /* Принудительное отображение для Safari */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .message {
@@ -179,24 +184,15 @@
         }
 
         @keyframes sparkle {
-
-            0%,
-            100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
         }
 
         @media (max-width: 768px) {
             body {
                 padding: 0;
             }
-
+            
             .container {
                 padding: 0.5rem;
                 min-height: 100vh;
@@ -204,28 +200,28 @@
                 flex-direction: column;
                 justify-content: center;
             }
-
+            
             .countdown {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.8rem;
             }
-
+            
             .time-unit {
                 padding: 0.8rem;
                 min-height: 70px;
                 border-radius: 12px;
             }
-
+            
             .countdown-container {
                 margin: 1rem 0;
                 padding: 1rem;
                 border-radius: 15px;
             }
-
+            
             .heart {
                 font-size: 16px;
             }
-
+            
             .sparkle {
                 font-size: 10px;
             }
@@ -235,17 +231,17 @@
             .container {
                 padding: 0.3rem;
             }
-
+            
             .countdown {
                 gap: 0.6rem;
             }
-
+            
             .time-unit {
                 padding: 0.6rem;
                 min-height: 60px;
                 border-radius: 10px;
             }
-
+            
             .countdown-container {
                 padding: 0.8rem;
                 margin: 0.8rem 0;
@@ -256,32 +252,31 @@
             .container {
                 padding: 0.5rem;
             }
-
+            
             .title {
                 margin-bottom: 0.5rem;
             }
-
+            
             .subtitle {
                 margin-bottom: 1rem;
             }
-
+            
             .countdown-container {
                 margin: 1rem 0;
             }
-
+            
             .message {
                 margin-top: 1rem;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="hearts" id="hearts"></div>
     <div class="container">
         <h1 class="title">💕 Скоро Важный Момент 💕</h1>
         <p class="subtitle">Время до особенного дня</p>
-
+        
         <div class="countdown-container">
             <div class="countdown">
                 <div class="time-unit">
@@ -310,79 +305,97 @@
 
     <script>
         // Устанавливаем дату окончания: 13 июля 2025 года, 20:00
-        const endDate = new Date('2025-07-13T20:00:00')
+        const endDate = new Date('2025-07-13T20:00:00');
 
         function updateCountdown() {
-            const now = new Date()
-            const difference = endDate - now
+            const now = new Date();
+            const difference = endDate - now;
 
             // Если время уже прошло, показываем 0
             if (difference < 0) {
-                document.getElementById('days').textContent = '0'
-                document.getElementById('hours').textContent = '0'
-                document.getElementById('minutes').textContent = '0'
-                document.getElementById('seconds').textContent = '0'
-
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                
                 // Меняем сообщение когда время истекло
-                document.querySelector('.message p').textContent = 'Особенный момент наступил! 🎉💕'
-                return
+                document.querySelector('.message p').textContent = 'Особенный момент наступил! 🎉💕';
+                return;
             }
 
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24))
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days
-            document.getElementById('hours').textContent = hours
-            document.getElementById('minutes').textContent = minutes
-            document.getElementById('seconds').textContent = seconds
+            // Принудительное обновление для Safari
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if (daysEl) daysEl.textContent = days.toString();
+            if (hoursEl) hoursEl.textContent = hours.toString();
+            if (minutesEl) minutesEl.textContent = minutes.toString();
+            if (secondsEl) secondsEl.textContent = seconds.toString();
+
+            // Принудительная перерисовка для Safari
+            daysEl.style.opacity = '0.99';
+            hoursEl.style.opacity = '0.99';
+            minutesEl.style.opacity = '0.99';
+            secondsEl.style.opacity = '0.99';
+            
+            setTimeout(() => {
+                daysEl.style.opacity = '1';
+                hoursEl.style.opacity = '1';
+                minutesEl.style.opacity = '1';
+                secondsEl.style.opacity = '1';
+            }, 10);
         }
 
         // Создание падающих сердечек
         function createHeart() {
-            const heart = document.createElement('div')
-            heart.className = 'heart'
-            heart.innerHTML = '❤️'
-            heart.style.left = Math.random() * 100 + '%'
-            heart.style.animationDelay = Math.random() * 3 + 's'
-            heart.style.animationDuration = (Math.random() * 3 + 6) + 's'
-            document.getElementById('hearts').appendChild(heart)
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            document.getElementById('hearts').appendChild(heart);
 
             setTimeout(() => {
-                heart.remove()
-            }, 9000)
+                heart.remove();
+            }, 9000);
         }
 
         // Создание блесток
         function createSparkle() {
-            const sparkle = document.createElement('div')
-            sparkle.className = 'sparkle'
-            sparkle.innerHTML = '✨'
-            sparkle.style.left = Math.random() * 100 + '%'
-            sparkle.style.top = Math.random() * 100 + '%'
-            sparkle.style.animationDelay = Math.random() * 2 + 's'
-            document.body.appendChild(sparkle)
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
 
             setTimeout(() => {
-                sparkle.remove()
-            }, 3000)
+                sparkle.remove();
+            }, 3000);
         }
 
         // Обновляем счетчик каждую секунду
-        setInterval(updateCountdown, 1000)
-        updateCountdown()
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
         // Создаем сердечки каждые 2 секунды
-        setInterval(createHeart, 2000)
+        setInterval(createHeart, 2000);
 
         // Создаем блестки каждые 3 секунды
-        setInterval(createSparkle, 3000)
+        setInterval(createSparkle, 3000);
 
         // Создаем начальные элементы
-        createHeart()
+        createHeart();
         createSparkle();
     </script>
 </body>
-
 </html>

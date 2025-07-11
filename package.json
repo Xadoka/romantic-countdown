@@ -1,0 +1,13 @@
+{
+	"name": "romantic-countdown",
+	"version": "1.0.0",
+	"description": "Романтичный сайт с обратным отсчетом",
+	"main": "index.html",
+	"scripts": {
+		"start": "serve -s . -p $PORT",
+		"build": "echo 'No build needed'"
+	},
+	"dependencies": {
+		"serve": "^14.0.0"
+	}
+}
